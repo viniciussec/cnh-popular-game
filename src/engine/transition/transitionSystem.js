@@ -105,7 +105,7 @@ export function checkTransitions(scene) {
  * @param {'home'|'city'} area
  * @param {object} options
  */
-export function goToArea(scene, area, options = {}) {
+export async function goToArea(scene, area, options = {}) {
   const { delay = 0, preservePlayer = true } = options;
   const state = scene.playerState;
 

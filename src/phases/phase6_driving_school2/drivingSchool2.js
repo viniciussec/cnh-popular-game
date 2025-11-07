@@ -2,9 +2,13 @@ import * as CameraSystem from '../../engine/camera/cameraSystem.js';
 import { AREAS, WORLD_SIZE } from '../../core/config.js';
 import InteractiveObject from '../../engine/interaction/InteractiveObject.js';
 import { DirectionArrow } from '../../engine/utils/directionArrow.js';
+import { phase6Assets } from '../../assets/phase6_assets.js';
+import { loadAssets } from '../../engine/utils/assetLoader.js';
 
-export function startPhase6(scene) {
+export async function startPhase6(scene) {
   const { width, height } = scene.scale;
+
+  await loadAssets(scene, phase6Assets);
 
   CameraSystem.initCamera(scene, scene.player, WORLD_SIZE, height);
   scene.physics.world.setBounds(0, 0, WORLD_SIZE, height);

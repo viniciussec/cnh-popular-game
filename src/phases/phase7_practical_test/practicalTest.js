@@ -3,9 +3,13 @@ import { AREAS, WORLD_SIZE } from '../../core/config.js';
 import InteractiveObject from '../../engine/interaction/InteractiveObject.js';
 import StartCarGameScene from '../../engine/ui/StartCarGameScene.js';
 import { DirectionArrow } from '../../engine/utils/directionArrow.js';
+import { loadAssets } from '../../engine/utils/assetLoader.js';
+import { phase7Assets } from '../../assets/phase7_assets.js';
 
-export function startPhase7(scene) {
+export async function startPhase7(scene) {
   const { width, height } = scene.scale;
+  
+  await loadAssets(scene, phase7Assets);
 
   CameraSystem.initCamera(scene, scene.player, WORLD_SIZE, height);
   scene.physics.world.setBounds(0, 0, WORLD_SIZE, height);

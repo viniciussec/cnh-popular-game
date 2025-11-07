@@ -1,0 +1,30 @@
+export const coreAssets = [
+  { type: "image", key: "capa", path: "./assets/images/cnh-popular.png" },
+  { type: "image", key: "instrucoes", path: "./assets/images/instrucoes.png" },
+  { type: "image", key: "logo", path: "./assets/images/iris-logo-marca.png" },
+  { type: "image", key: "bg_intro", path: "./assets/images/intro_bg.png" },
+
+  { type: "image", key: "select_player_boy", path: "./assets/images/select_player_boy.png" },
+  { type: "image", key: "select_player_girl", path: "./assets/images/select_player_girl.png" },
+
+  { type: "spritesheet", key: "player_girl", path: "./assets/images/player_girl.png",
+    config: { frameWidth: 197.5, frameHeight: 300 } },
+  { type: "spritesheet", key: "player_boy", path: "./assets/images/player_boy.png",
+    config: { frameWidth: 197.5, frameHeight: 300 } },
+
+  { type: "image", key: "button_up", path: "./assets/images/button-up.png" },
+  { type: "image", key: "button_left", path: "./assets/images/button-left.png" },
+  { type: "image", key: "button_right", path: "./assets/images/button-right.png" },
+  { type: "image", key: "button_action", path: "./assets/images/button-action.png" },
+  { type: "image", key: "arrow_keys", path: "./assets/images/arrow_keys.png" },
+  { type: "image", key: "wasd_keys", path: "./assets/images/wasd_keys.png" },
+  { type: "image", key: "back_arrow_left", path: "./assets/images/seta-esquerda.png" },
+  { type: "image", key: "button_action_2", path: "./assets/images/button-action-2.png" },
+  { type: "image", key: "button_left_2", path: "./assets/images/button-left-2.png" },
+  { type: "image", key: "button_right_2", path: "./assets/images/button-right-2.png" },
+  { type: "image", key: "button_up_2", path: "./assets/images/button-up-2.png" },
+  { type: "image", key: "button_a", path: "./assets/images/button-a.png" },
+  { type: "image", key: "button_d", path: "./assets/images/button-d.png" },
+  { type: "image", key: "button_w", path: "./assets/images/button-w.png" },
+  { type: "audio", key: "main_theme", path: "./assets/sounds/main_theme.mp3" },
+];

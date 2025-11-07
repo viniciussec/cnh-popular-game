@@ -35,6 +35,9 @@ import { updatePhase8 } from "../phases/phase8_final_scene/finalScene.js";
 import { enableDebug, setupDebugToggle } from "../engine/utils/enableDebug.js";
 import { IntroSystem } from "../engine/intro/introSystem.js"; // NOVO IMPORT
 import { DirectionArrow } from "../engine/utils/directionArrow.js";
+import { loadAssets } from "../engine/utils/assetLoader.js";
+import { coreAssets } from "../assets/core_assets.js";
+import { phase1Assets } from "../assets/phase1_assets.js";
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -72,115 +75,9 @@ export default class GameScene extends Phaser.Scene {
   }
 
   preload() {
-    // === IMAGENS DA INTRO ===
-    this.load.image("capa", "./assets/images/cnh-popular.png");
-    this.load.image("instrucoes", "./assets/images/instrucoes.png");
-    this.load.image("logo", "./assets/images/iris-logo-marca.png");
-
-    // === IMAGENS PARA TELA DE SELEÇÃO ===
-    this.load.image(
-      "select_player_boy",
-      "./assets/images/select_player_boy.png"
-    );
-    this.load.image(
-      "select_player_girl",
-      "./assets/images/select_player_girl.png"
-    );
-
-    // === SPRITESHEETS PARA O JOGO ===
-    this.load.spritesheet("player_girl", "./assets/images/player_girl.png", {
-      frameWidth: 197.5,
-      frameHeight: 300,
+    return loadAssets(this, coreAssets).then(() => {
+      this._makeRectTexture("background", 1600, 450, 0x1f2630);
     });
-
-    this.load.spritesheet("player_boy", "./assets/images/player_boy.png", {
-      frameWidth: 197.5,
-      frameHeight: 300,
-    });
-
-    this.load.spritesheet("pc", "./assets/images/pc.png", {
-      frameWidth: 352,
-      frameHeight: 224,
-    });
-
-    this.load.image("doc_rg", "./assets/images/rg.png");
-    this.load.image("doc_cpf", "./assets/images/cpf.png");
-    this.load.image("doc_comprovante", "./assets/images/comprovante.png");
-    this.load.image("habilitacao", "./assets/images/habilitacao.png");
-    this.load.image("home_bg", "./assets/images/home_bg.png");
-
-    this.load.image("bg_intro", "./assets/images/intro_bg.png");
-
-    this.load.image("city_bg", "./assets/images/city_bg.png");
-    this.load.image("autoescola", "./assets/images/autoescola.png");
-    this.load.image("obstacle_1", "./assets/images/obstaculo_1.png");
-    this.load.image("obstacle_2", "./assets/images/obstaculo_2.png");
-    this.load.image("obstacle_3", "./assets/images/obstaculo_3.png");
-
-    this.load.image(
-      "instrutor_exame_pratico",
-      "./assets/images/instrutor_exame_pratico.png"
-    );
-    this.load.image("clinic_bg", "./assets/images/clinic_bg.png");
-    this.load.image("clinic", "./assets/images/clinica.png");
-
-    this.load.image("button_up", "./assets/images/button-up.png");
-    this.load.image("button_left", "./assets/images/button-left.png");
-    this.load.image("button_right", "./assets/images/button-right.png");
-    this.load.image("button_action", "./assets/images/button-action.png");
-
-    this.load.image("instructor", "./assets/images/instructor.png");
-
-    this.load.image("driving_bg", "./assets/images/driving_bg.png");
-
-    this.load.image("instructor_2", "./assets/images/instructor_2.png");
-
-    this.load.image("driving_2_bg", "./assets/images/driving_2_bg.png");
-
-    this.load.image("detran", "./assets/images/detran.png");
-    this.load.image(
-      "detran_theoretical_bg",
-      "./assets/images/detran_theoretical_bg.png"
-    );
-
-    this.load.image(
-      "detran_practical_bg",
-      "./assets/images/detran_practical_bg.png"
-    );
-
-    this.load.audio("boing", "./assets/sounds/boing.wav");
-    this.load.image("final_bg", "./assets/images/final_bg.png");
-    this.load.image("mail", "./assets/images/correio.png");
-    this.load.image("car_final", "./assets/images/carro_final.png");
-    this.load.image("mother", "./assets/images/mae.png");
-    this.load.image("brother", "./assets/images/irmao.png");
-    this.load.image("grandpa", "./assets/images/avo.png");
-
-    this.load.audio("driving_car", "./assets/sounds/driving_car.wav");
-    this.load.audio("success", "./assets/sounds/success.wav");
-
-    this.load.audio("main_theme", "./assets/sounds/main_theme.mp3");
-    this.load.audio("jump", "./assets/sounds/jump.wav");
-    this.load.audio("item", "./assets/sounds/item.wav");
-    this.load.audio("click", "./assets/sounds/click.wav");
-    this.load.audio("fail", "./assets/sounds/fail.wav");
-    this.load.audio("goal_complete", "./assets/sounds/goal_complete.wav");
-
-    this.load.image("arrow_keys", "./assets/images/arrow_keys.png");
-    this.load.image("wasd_keys", "./assets/images/wasd_keys.png");
-    this.load.image("back_arrow_left", "./assets/images/seta-esquerda.png");
-    this.load.image("button_action_2", "./assets/images/button-action-2.png");
-    this.load.image("button_left_2", "./assets/images/button-left-2.png");
-    this.load.image("button_right_2", "./assets/images/button-right-2.png");
-    this.load.image("button_up_2", "./assets/images/button-up-2.png");
-    this.load.image("button_a", "./assets/images/button-a.png");
-    this.load.image("button_d", "./assets/images/button-d.png");
-    this.load.image("button_w", "./assets/images/button-w.png");
-
-    this.load.image("arrow_forward", "./assets/images/seta-direita.png");
-    this.load.image("icon_alert", "./assets/images/icon_alert.png");
-
-    this._makeRectTexture("background", 1600, 450, 0x1f2630);
   }
 
   create() {
@@ -259,9 +156,8 @@ export default class GameScene extends Phaser.Scene {
     }
 
     try {
-      if (this.player) {
-        updatePlayerMovement(this);
-      }
+      if (!this.player || !this.player.body) return;
+      updatePlayerMovement(this);
 
       if (this.playerState?.currentArea === AREAS.home && this.documents) {
         updateDocuments(this);
@@ -292,7 +188,8 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  startMainGame() {
+  async startMainGame() {
+    await loadAssets(this, phase1Assets);
     this.music = this.sound.play("main_theme", CONFIG_SONG);
 
     const { width, height } = this.scale;
