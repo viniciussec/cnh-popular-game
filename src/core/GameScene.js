@@ -156,9 +156,8 @@ export default class GameScene extends Phaser.Scene {
     }
 
     try {
-      if (this.player) {
-        updatePlayerMovement(this);
-      }
+      if (!this.player || !this.player.body) return;
+      updatePlayerMovement(this);
 
       if (this.playerState?.currentArea === AREAS.home && this.documents) {
         updateDocuments(this);

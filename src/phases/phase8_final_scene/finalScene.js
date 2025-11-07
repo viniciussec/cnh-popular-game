@@ -22,6 +22,7 @@ function createCarCutscene(scene) {
   scene.playerState.canMove = false;
   player.setPosition(car.x, car.y);
   scene.input.keyboard.enabled = false;
+  ui?.buttonsContainer?.list?.forEach((b) => b.disableInteractive?.());
 
   sound.stopAll();
   const drivingSound = sound.add("driving_car", {
