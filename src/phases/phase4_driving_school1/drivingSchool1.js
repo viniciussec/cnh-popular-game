@@ -2,9 +2,13 @@ import * as CameraSystem from '../../engine/camera/cameraSystem.js';
 import { AREAS, WORLD_SIZE } from '../../core/config.js';
 import InteractiveObject from '../../engine/interaction/InteractiveObject.js';
 import { DirectionArrow } from '../../engine/utils/directionArrow.js';
+import { phase4Assets } from '../../assets/phase4_assets.js';
+import { loadAssets } from '../../engine/utils/assetLoader.js';
 
-export function startPhase4(scene) {
+export async function startPhase4(scene) {
   const { width, height } = scene.scale;
+
+  await loadAssets(scene, phase4Assets);
 
   CameraSystem.initCamera(scene, scene.player, WORLD_SIZE, height);
   scene.physics.world.setBounds(0, 0, WORLD_SIZE, height);

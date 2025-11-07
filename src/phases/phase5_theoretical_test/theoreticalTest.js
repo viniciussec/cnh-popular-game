@@ -4,9 +4,13 @@ import InteractiveObject from '../../engine/interaction/InteractiveObject.js';
 import { updateGenericInteractions } from '../../engine/interaction/interactionSystem.js';
 import TrafficSignsGameScene from '../../core/TrafficSignsGameScene.js';
 import { DirectionArrow } from '../../engine/utils/directionArrow.js';
+import { loadAssets } from '../../engine/utils/assetLoader.js';
+import { phase5Assets } from '../../assets/phase5_assets.js';
 
-export function startPhase5(scene) {
+export async function startPhase5(scene) {
   const { width, height } = scene.scale;
+
+  await loadAssets(scene, phase5Assets);
 
   CameraSystem.initCamera(scene, scene.player, WORLD_SIZE, height);
   scene.physics.world.setBounds(0, 0, WORLD_SIZE, height);
@@ -122,10 +126,6 @@ function startMiniGame(scene) {
     const miniGame = scene.scene.get(scene.miniGameKey);
 
     if (!miniGame || !miniGame.cameras?.main) return;
-
-    miniGame.cameras.main.setBackgroundColor('#ffffff');
-    miniGame.scale.resize(width * 1, height * 1);
-
   });
 }
 

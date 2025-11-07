@@ -15,7 +15,9 @@
  *   - scene.ground.ground (para colisão)
  */
 
+import { phase1Assets } from "../../assets/phase1_assets";
 import { AREAS } from "../../core/config";
+import { loadAssets } from "../../engine/utils/assetLoader";
 import { DirectionArrow } from "../../engine/utils/directionArrow";
 
 export function setupDocuments(scene) {
@@ -65,8 +67,11 @@ export function setupDocuments(scene) {
 // LOOP DE ATUALIZAÇÃO PRINCIPAL
 // ======================================================
 
-export function updateDocuments(scene) {
+export async function updateDocuments(scene) {
   const { playerState, documents } = scene;
+  
+  await loadAssets(scene, phase1Assets);
+
   if (!documents || !documents.group) return;
 
   // missão ainda não começou → nada acontece

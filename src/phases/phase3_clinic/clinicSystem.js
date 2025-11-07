@@ -3,9 +3,12 @@ import { AREAS, WORLD_SIZE } from '../../core/config.js';
 import InteractiveObject from '../../engine/interaction/InteractiveObject.js';
 import MemoryGameScene from '../../core/MemoryGameScene.js';
 import { DirectionArrow } from '../../engine/utils/directionArrow.js';
+import { loadAssets } from '../../engine/utils/assetLoader.js';
+import { phase3Assets } from '../../assets/phase3_assets.js';
 
-export function startPhase3(scene) {
+export async function startPhase3(scene) {
   const { width, height } = scene.scale;
+  await loadAssets(scene, phase3Assets);
 
   CameraSystem.initCamera(scene, scene.player, WORLD_SIZE, height);
   scene.physics.world.setBounds(0, 0, WORLD_SIZE, height);
@@ -31,7 +34,7 @@ export function startPhase3(scene) {
   const isGirl = scene.playerState.character === "girl";
   const bemVindo = isGirl ? "bem-vinda" : "bem-vindo";
   const clinic = new InteractiveObject(scene, {
-    key: 'clinic',
+    key: "clinic",
     x: width + 157,
     y: height - 228,
     texture: 'clinic',

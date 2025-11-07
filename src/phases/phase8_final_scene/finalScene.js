@@ -2,6 +2,8 @@ import * as CameraSystem from "../../engine/camera/cameraSystem.js";
 import { AREAS, CONFIG_EFFECT, WORLD_SIZE } from "../../core/config.js";
 import InteractiveObject from "../../engine/interaction/InteractiveObject.js";
 import { DirectionArrow } from "../../engine/utils/directionArrow.js";
+import { phase8Assets } from "../../assets/phase8_assets.js";
+import { loadAssets } from "../../engine/utils/assetLoader.js";
 
 function createCarCutscene(scene) {
   const carRef = scene.interactiveObjects.find(
@@ -118,8 +120,10 @@ function showEndGameModal(scene) {
   });
 }
 
-export function startPhase8(scene) {
+export async function startPhase8(scene) {
   const { width, height } = scene.scale;
+
+  await loadAssets(scene, phase8Assets);
 
   Object.assign(scene.playerState, {
     canMove: true,

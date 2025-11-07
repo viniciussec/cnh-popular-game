@@ -4,12 +4,16 @@ import { updateGenericInteractions } from "../../engine/interaction/interactionS
 import InteractiveObject from "../../engine/interaction/InteractiveObject.js";
 import { AREAS, WORLD_SIZE } from "../../core/config.js";
 import { DirectionArrow } from "../../engine/utils/directionArrow.js";
+import { loadAssets } from "../../engine/utils/assetLoader.js";
+import { phase2Assets } from "../../assets/phase2_assets.js";
 
 /**
  * FASE 2 — Corrida até o DETRAN + Interação com NPC
  */
-export function startPhase2(scene) {
+export async function startPhase2(scene) {
   const { width, height } = scene.scale;
+
+  await loadAssets(scene, phase2Assets);
 
   if (scene.interactiveObjects) {
     scene.interactiveObjects = scene.interactiveObjects.filter(
